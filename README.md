@@ -34,6 +34,16 @@ Pay special attention to what data the frontend is expecting from each API respo
 
 [View the README.md within ./frontend for more details.](./frontend/README.md)
 
+### API Refrence
+
+Refer [Backend Readme](./backend/README.md)
+
+### Deployement
+
+Deployement instrustions of each part of the application are given in their respective readme file.
+[Frontend Readme](./frontend/README.md)
+[Backend Readme](./backend/README.md)
+
 ### AUTHORS
 
 The starter code of the project was contributed by [UDACITY](https://www.udacity.com). I have completed the backend part of the app along with connecting it 
