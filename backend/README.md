@@ -98,3 +98,190 @@ createdb trivia_test
 psql trivia_test < trivia.psql
 python test_flaskr.py
 ```
+
+API DOCUMENTATION:-
+
+Getting Started
+.Base Url: At present this app can be run locally and is not hosted
+as a base URL. The backend app is hosted at the default, 
+http://127.0.0.1:5000/ which is set as a proxy in the frontend 
+configuration.
+
+
+Error Handling
+
+Errors are returned as JSON objects in the following format:
+
+{
+    "success": False, 
+    "error": 400,
+    "message": "bad request"
+}
+
+The API will return three error types when requests fail:
+
+    400: Bad Request
+    404: Resource Not Found
+    422: Not Processable
+
+Endponts
+
+Get /categories
+
+General
+1. returns a list of categories object and success value
+
+{
+  "categories": {
+    "1": "Science", 
+    "2": "Art", 
+    "3": "Geography", 
+    "4": "History", 
+    "5": "Entertainment", 
+    "6": "Sports"
+  }, 
+  "success": true
+}
+
+Get/questions
+
+1.General:
+1. return a list of questions objects, success value,
+and total no of questions
+2. Results are paginated in a group of 10. It includes
+a request argument to choose a page number, starting 
+from 1.
+
+sample response-
+
+ "categories": {
+   "1": "Science", 
+   "2": "Art", 
+   "3": "Geography", 
+   "4": "History", 
+   "5": "Entertainment", 
+   "6": "Sports"
+ }, 
+ "current_category": null, 
+ "questions": [
+   {
+     "answer": "Maya Angelou", 
+     "category": 4, 
+     "difficulty": 2, 
+     "id": 5, 
+     "question": "Whose autobiography is entitled 'I Know Why the Caged Bird Sings'?"
+   },  
+   {
+     "answer": "Escher", 
+     "category": 2, 
+     "difficulty": 1, 
+     "id": 16, 
+     "question": "Which Dutch graphic artist\u2013initials M C was a creator of optical illusions?"
+   }
+ ], 
+ "success": true, 
+ "total_questions": 2
+}
+
+Delete /questions/{question_id}
+
+General:
+1. Deletes the question of the given ID if it exsists.
+returns the id of the deleted book and success value.
+
+Sample response:
+
+{
+  "deleted": "28", 
+  "success": true
+}
+
+
+Post /questions
+
+General:
+1. Creates a new question using the submitted request body 
+{question:string, answer:string, difficulty:int, category:string}
+it returns the id of the creted question with success value
+
+Sample response:
+
+{
+  "created": 35, 
+  "success": true
+}
+
+Post /questions/search
+
+General:
+1. Searches for question matching the submitted request body
+{searchTerm:string}
+it returns questions object, success value and 
+total available questions.
+Sample response:
+
+{
+  "questions": [
+    {
+      "answer": "Lisbon", 
+      "category": 2, 
+      "difficulty": 1, 
+      "id": 29, 
+      "question": "What is the capital of Portugal?"
+    }
+  ], 
+  "success": true, 
+  "total_questions": 30
+}
+
+
+Get /categories/{category_id}/questions
+
+General:
+1. searches for the questions in the category_id and returns
+the questions object, success value, total_questions and
+category_id
+
+Sample response:
+
+{
+  "current_category": 1, 
+  "questions": [
+    {
+      "answer": "The Liver", 
+      "category": 1, 
+      "difficulty": 4, 
+      "id": 20, 
+      "question": "What is the heaviest organ in the human body?"
+    }, 
+    {
+      "answer": "Alexander Fleming", 
+      "category": 1, 
+      "difficulty": 3, 
+      "id": 21, 
+      "question": "Who discovered penicillin?"
+    }, 
+  ], 
+  "success": true, 
+  "total_questions": 5
+}
+
+
+Post /quizzes
+
+General:
+1. It fetches one random question within a specified category
+it returns a random question from the database which is not
+asked previously and returns a random question object along with
+success value.
+
+{
+  "question": {
+    "answer": "The Liver", 
+    "category": 1, 
+    "difficulty": 4, 
+    "id": 20, 
+    "question": "What is the heaviest organ in the human body?"
+  }, 
+  "success": true
+}
