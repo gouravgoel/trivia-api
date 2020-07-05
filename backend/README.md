@@ -99,7 +99,7 @@ psql trivia_test < trivia.psql
 python test_flaskr.py
 ```
 
-API DOCUMENTATION:-
+## API DOCUMENTATION:-
 
 Getting Started
 .Base Url: At present this app can be run locally and is not hosted
@@ -111,12 +111,13 @@ configuration.
 Error Handling
 
 Errors are returned as JSON objects in the following format:
-
+```bash
 {
     "success": False, 
     "error": 400,
     "message": "bad request"
 }
+```
 
 The API will return three error types when requests fail:
 
@@ -130,7 +131,7 @@ Get /categories
 
 General
 1. returns a list of categories object and success value
-
+```bash
 {
   "categories": {
     "1": "Science", 
@@ -142,7 +143,7 @@ General
   }, 
   "success": true
 }
-
+```
 Get/questions
 
 1.General:
@@ -153,7 +154,7 @@ a request argument to choose a page number, starting
 from 1.
 
 sample response-
-
+```bash
  "categories": {
    "1": "Science", 
    "2": "Art", 
@@ -182,7 +183,7 @@ sample response-
  "success": true, 
  "total_questions": 2
 }
-
+```
 Delete /questions/{question_id}
 
 General:
@@ -190,12 +191,12 @@ General:
 returns the id of the deleted book and success value.
 
 Sample response:
-
+```bash
 {
   "deleted": "28", 
   "success": true
 }
-
+```
 
 Post /questions
 
@@ -205,12 +206,12 @@ General:
 it returns the id of the creted question with success value
 
 Sample response:
-
+```bash
 {
   "created": 35, 
   "success": true
 }
-
+```
 Post /questions/search
 
 General:
@@ -219,7 +220,7 @@ General:
 it returns questions object, success value and 
 total available questions.
 Sample response:
-
+```bash
 {
   "questions": [
     {
@@ -233,7 +234,7 @@ Sample response:
   "success": true, 
   "total_questions": 30
 }
-
+```
 
 Get /categories/{category_id}/questions
 
@@ -243,7 +244,7 @@ the questions object, success value, total_questions and
 category_id
 
 Sample response:
-
+```bash
 {
   "current_category": 1, 
   "questions": [
@@ -265,7 +266,7 @@ Sample response:
   "success": true, 
   "total_questions": 5
 }
-
+```
 
 Post /quizzes
 
@@ -274,7 +275,7 @@ General:
 it returns a random question from the database which is not
 asked previously and returns a random question object along with
 success value.
-
+```bash
 {
   "question": {
     "answer": "The Liver", 
@@ -285,3 +286,4 @@ success value.
   }, 
   "success": true
 }
+```
