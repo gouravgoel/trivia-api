@@ -202,7 +202,7 @@ Post /questions
 
 General:
 1. Creates a new question using the submitted request body 
-{question:string, answer:string, difficulty:int, category:string}
+```bash{question:string, answer:string, difficulty:int, category:string}```
 it returns the id of the creted question with success value
 
 Sample response:
@@ -216,7 +216,7 @@ Post /questions/search
 
 General:
 1. Searches for question matching the submitted request body
-{searchTerm:string}
+```bash{searchTerm:string}```
 it returns questions object, success value and 
 total available questions.
 Sample response:
